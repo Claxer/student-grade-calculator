@@ -12,13 +12,33 @@ while True:
     print("\nStudent:", name)
     print("Average:", round(average, 2))
 
-    if average >= 90:
+    if average >= 97:
+        print("Grade: A+")
+        print("Remarks: Outstanding!")
+
+    elif average >= 93:
         print("Grade: A")
         print("Remarks: Excellent!")
 
-    elif average >= 80:
+    elif average >= 90:
+        print("Grade: A-")
+        print("Remarks: Excellent!")
+
+    elif average >= 87:
+        print("Grade: B+")
+        print("Remarks: Very Good!")
+
+    elif average >= 83:
         print("Grade: B")
         print("Remarks: Very Good!")
+
+    elif average >= 80:
+        print("Grade: B-")
+        print("Remarks: Good!")
+
+    elif average >= 77:
+        print("Grade: C+")
+        print("Remarks: Passed!")
 
     elif average >= 75:
         print("Grade: C")
