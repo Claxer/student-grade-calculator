@@ -2,6 +2,8 @@
 
 A beginner-friendly Python project that calculates a student's average grade based on multiple subjects. The project was expanded to provide more detailed information about a student's academic performance while still keeping the original grading system.
 
+The program now works as a simple **Student Grade Management and Performance Analyzer**, allowing users to calculate grades, manage student records, analyze class performance, rank students, and identify students who may need academic improvement.
+
 ## Features
 
 ### Student Information
@@ -12,6 +14,9 @@ A beginner-friendly Python project that calculates a student's average grade bas
 * Store student records while the program is running
 * View previously calculated student records
 * Search for a student using their name or student ID
+* View detailed student reports
+* Edit student information
+* Delete student records
 
 ### Subject Grades
 
@@ -23,8 +28,9 @@ A beginner-friendly Python project that calculates a student's average grade bas
 * Supports Computer
 * Supports Programming
 * Supports Database
-* Easily calculate the average of all subjects
+* Calculate the average of all subjects
 * Display each subject and its grade
+* Store individual subject grades inside each student record
 
 ### Grade Validation
 
@@ -35,17 +41,34 @@ A beginner-friendly Python project that calculates a student's average grade bas
 * Asks the user to enter the grade again when invalid input is provided
 * Uses a `while` loop to keep asking until a valid grade is entered
 
+### Attendance Validation
+
+* Accept attendance from 0 to 100 percent
+* Prevent invalid attendance values
+* Detect non-numeric attendance input
+* Continue asking until valid attendance is entered
+
 ### Grade Calculation
 
 * Calculate average grade
 * Display letter grade
 * Display pass/fail remarks
-* Support detailed letter grades (A+, A, A-, B+, B, B-, C+, C, and F)
-* Automatically displays remarks based on the student's average
+* Support detailed letter grades:
+
+  * A+
+  * A
+  * A-
+  * B+
+  * B
+  * B-
+  * C+
+  * C
+  * F
+* Automatically display remarks based on the student's average
 * Round the final average to two decimal places
 * Display the final grade as a percentage
 
-### Academic Performance
+## Academic Performance
 
 * Display the highest grade
 * Display the subject with the highest grade
@@ -58,8 +81,10 @@ A beginner-friendly Python project that calculates a student's average grade bas
 * Display a performance level based on the student's average
 * Display the student's academic standing
 * Display an estimated GPA equivalent
+* Calculate the number of points needed to pass a failed subject
+* Provide study recommendations
 
-### Recognition Levels
+## Recognition Levels
 
 The program can identify different levels of academic performance based on the student's average:
 
@@ -69,7 +94,7 @@ The program can identify different levels of academic performance based on the s
 * Passed
 * Needs Improvement
 
-### Performance Levels
+## Performance Levels
 
 The program also provides a more detailed performance level:
 
@@ -80,7 +105,7 @@ The program also provides a more detailed performance level:
 * Satisfactory
 * Needs Improvement
 
-### Subject Performance
+## Subject Performance
 
 * Display all subjects using a loop
 * Show the grade for each subject
@@ -90,7 +115,7 @@ The program also provides a more detailed performance level:
 * Count the number of failed subjects
 * Give the student a quick overview of their subject performance
 
-### Grade Summary
+## Grade Summary
 
 * Display every subject and its grade
 * Classify each subject as Excellent, Very Good, Good, Passed, or Failed
@@ -98,7 +123,7 @@ The program also provides a more detailed performance level:
 * Provide a simple summary of the student's grades
 * Display the number of subjects in each performance category
 
-### Attendance Tracking
+## Attendance Tracking
 
 * Enter the student's attendance percentage
 * Validate attendance from 0 to 100
@@ -108,7 +133,7 @@ The program also provides a more detailed performance level:
 * Classify attendance as Excellent, Good, Satisfactory, or Poor
 * Display warnings when attendance needs improvement
 
-### Scholarship Eligibility
+## Scholarship Eligibility
 
 The program checks whether the student meets the basic scholarship requirements.
 
@@ -120,10 +145,17 @@ A student is considered eligible when:
 
 The program displays either:
 
-* Scholarship Eligibility: Eligible
-* Scholarship Eligibility: Not Eligible
+```text
+Scholarship Eligibility: Eligible
+```
 
-### Overall Status
+or:
+
+```text
+Scholarship Eligibility: Not Eligible
+```
+
+## Overall Status
 
 The program determines the student's overall academic status.
 
@@ -142,7 +174,7 @@ If the overall average is below 75:
 * Overall Status: FAILED
 * Warning that the overall average is below passing
 
-### GPA Equivalent
+## GPA Equivalent
 
 The program provides an estimated GPA equivalent based on the student's average.
 
@@ -160,7 +192,7 @@ The GPA system includes:
 
 The program also provides a description of the GPA result.
 
-### Academic Standing
+## Academic Standing
 
 The program provides an additional academic standing based on the student's average, failed subjects, and attendance.
 
@@ -171,7 +203,7 @@ Possible results include:
 * Satisfactory Standing
 * Academic Improvement Needed
 
-### Subject Improvement
+## Subject Improvement
 
 The program identifies subjects that are below the passing grade.
 
@@ -180,18 +212,20 @@ For every failed subject, it calculates how many additional points are needed to
 Example:
 
 ```text
+==============================
 SUBJECT IMPROVEMENT NEEDED
+==============================
 
 Math needs 8.5 more points to reach the passing grade.
 ```
 
-If all subjects are already passing, the program displays:
+If all subjects are already passing:
 
 ```text
 No subject needs improvement to reach the passing grade.
 ```
 
-### Study Recommendations
+## Study Recommendations
 
 The program provides simple recommendations based on the student's results.
 
@@ -201,36 +235,36 @@ Examples include:
 * Spend more study time on subjects below 80
 * Improve attendance
 * Create a regular study schedule
+* Continue studying consistently
 * Maintain current study habits when performance is already good
 
-### Student Records
+## Student Records
 
-The program can temporarily store student information while it is running.
+The program temporarily stores student information while it is running.
 
 Each student record includes:
 
 * Student name
 * Student ID
+* Subjects
+* Individual subject grades
 * Average
 * Letter grade
 * Attendance
 * Number of failed subjects
 * GPA
+* Performance level
+* Academic standing
 
-The records can be viewed using the Student Records option.
+Student records are stored using a Python list containing dictionaries.
 
-> Student records are currently stored in a Python list and dictionary while the program is running. Records are not permanently saved after the program is closed.
+> Student records are currently stored only while the program is running. Records are not permanently saved after the program is closed.
 
-### Search Student
+## View Student Records
 
-The program allows the user to search for a saved student record.
+The **View Student Records** option displays all students currently stored in the program.
 
-Students can be searched using:
-
-* Student name
-* Student ID
-
-The search displays the student's:
+Information includes:
 
 * Name
 * Student ID
@@ -239,8 +273,106 @@ The search displays the student's:
 * Attendance
 * Failed subjects
 * GPA
+* Performance
+* Academic standing
 
-### Class Summary
+## Search Student
+
+The program allows the user to search for a saved student record.
+
+Students can be searched using:
+
+* Student name
+* Student ID
+* Partial names
+* Partial student IDs
+
+The search displays the student's academic information and results.
+
+## Detailed Student Report
+
+The program can generate a more complete report for a selected student.
+
+The detailed report includes:
+
+* Student name
+* Student ID
+* Every subject
+* Individual grades
+* Overall average
+* Letter grade
+* GPA
+* Performance level
+* Academic standing
+* Attendance
+* Attendance status
+* Number of failed subjects
+
+Example:
+
+```text
+===================================
+STUDENT REPORT
+===================================
+
+Name: Jose Navoa
+Student ID: 20260001
+
+SUBJECTS
+Math : 95
+English : 92
+Science : 94
+Programming : 96
+
+ACADEMIC INFORMATION
+Average: 94.25
+Letter Grade: A
+GPA: 1.25
+Performance: Excellent
+Academic Standing: Excellent Standing
+
+ATTENDANCE
+Attendance: 95 %
+Attendance Status: Excellent
+
+FAILED SUBJECTS: 0
+```
+
+## Edit Student Record
+
+The program allows existing student records to be modified.
+
+The user can edit:
+
+* Student name
+* Student ID
+* Subject grades
+* Attendance
+
+When grades or attendance are changed, the program recalculates:
+
+* Average
+* Letter grade
+* Failed subjects
+* GPA
+* Performance level
+* Academic standing
+
+This keeps the student's record updated after an edit.
+
+## Delete Student Record
+
+The program allows the user to remove an individual student record.
+
+Before deleting the record, the program asks for confirmation:
+
+```text
+Are you sure you want to delete this record? (yes/no):
+```
+
+This helps prevent accidental deletion.
+
+## Class Summary
 
 The program can create a summary of all students currently stored in the program.
 
@@ -254,6 +386,164 @@ The class summary displays:
 * Student with the lowest average
 * Number of students who passed
 * Number of students who failed
+* Class pass rate
+
+Example:
+
+```text
+==============================
+CLASS SUMMARY
+==============================
+
+Number of Students: 5
+Class Average: 87.42
+Highest Student Average: 94.25
+Highest Student: Jose Navoa
+Lowest Student Average: 72.50
+Lowest Student: Student 5
+Students Passed: 4
+Students Failed: 1
+Class Pass Rate: 80.0 %
+```
+
+## Student Ranking
+
+The program can rank all stored students according to their average grade.
+
+Students are displayed from the highest average to the lowest average.
+
+Example:
+
+```text
+==============================
+STUDENT RANKING
+==============================
+
+1 . Jose Navoa - Average: 94.25 - GPA: 1.25
+2 . Maria Santos - Average: 91.50 - GPA: 1.50
+3 . John Cruz - Average: 87.75 - GPA: 1.75
+```
+
+This feature uses Python's sorting functionality to organize student records.
+
+## Honor Students
+
+The program can identify students who meet the current honors condition.
+
+A student is included when:
+
+* Average is 90 or higher
+* No subjects are failed
+
+Example:
+
+```text
+==============================
+HONOR STUDENTS
+==============================
+
+Jose Navoa - Average: 94.25 - With Honors
+Maria Santos - Average: 91.50 - With Honors
+```
+
+If no students qualify:
+
+```text
+No students currently qualify for honors.
+```
+
+## Students Needing Improvement
+
+The program can identify students who may need additional academic improvement.
+
+A student is included when:
+
+* Their average is below 75
+* Or they have one or more failed subjects
+
+Example:
+
+```text
+==============================
+STUDENTS NEEDING IMPROVEMENT
+==============================
+
+John Cruz - Average: 72.50 - Failed Subjects: 2
+```
+
+## Subject Statistics
+
+The program can analyze individual subjects across all stored students.
+
+For each subject, it calculates:
+
+* Subject average
+* Highest grade
+* Lowest grade
+
+Example:
+
+```text
+==============================
+SUBJECT STATISTICS
+==============================
+
+Subject: Math
+Average: 88.50
+Highest Grade: 98
+Lowest Grade: 72
+
+Subject: Programming
+Average: 91.25
+Highest Grade: 100
+Lowest Grade: 80
+```
+
+This allows the user to see which subjects are performing well and which subjects may need more attention.
+
+## Class Performance
+
+The program groups students according to their overall average.
+
+The categories are:
+
+* Excellent
+* Good
+* Satisfactory
+* Needs Improvement
+
+Example:
+
+```text
+==============================
+CLASS PERFORMANCE
+==============================
+
+Excellent: 2
+Good: 3
+Satisfactory: 1
+Needs Improvement: 1
+```
+
+## Clear All Records
+
+The program includes an option to remove all student records currently stored in memory.
+
+The program asks for confirmation before deleting everything.
+
+Example:
+
+```text
+==============================
+CLEAR ALL RECORDS
+==============================
+
+Number of records: 5
+
+Are you sure you want to delete ALL records? (yes/no):
+```
+
+If the user enters `yes`, all current records are removed.
 
 ## Program Menu
 
@@ -267,7 +557,16 @@ The expanded version uses a menu system:
 2. View Student Records
 3. Search Student
 4. View Class Summary
-5. Exit
+5. View Detailed Student Report
+6. Edit Student Record
+7. Delete Student Record
+8. Rank Students
+9. View Honor Students
+10. Students Needing Improvement
+11. Subject Statistics
+12. Class Performance
+13. Clear All Records
+14. Exit
 ===================================
 ```
 
@@ -287,9 +586,45 @@ Searches for a student by name or student ID.
 
 **4. View Class Summary**
 
-Displays statistics for all students currently stored.
+Displays overall class statistics, including the class average and pass rate.
 
-**5. Exit**
+**5. View Detailed Student Report**
+
+Displays a complete academic report for a selected student.
+
+**6. Edit Student Record**
+
+Allows the user to change a student's name, ID, grades, or attendance.
+
+**7. Delete Student Record**
+
+Removes a selected student record after confirmation.
+
+**8. Rank Students**
+
+Displays students from the highest average to the lowest average.
+
+**9. View Honor Students**
+
+Displays students with an average of 90 or higher and no failed subjects.
+
+**10. Students Needing Improvement**
+
+Displays students who have a failing average or one or more failed subjects.
+
+**11. Subject Statistics**
+
+Shows the average, highest grade, and lowest grade for each subject.
+
+**12. Class Performance**
+
+Shows how many students belong to each overall performance category.
+
+**13. Clear All Records**
+
+Deletes all student records after confirmation.
+
+**14. Exit**
 
 Ends the program.
 
@@ -309,7 +644,12 @@ Ends the program.
 * `sum()` function
 * `max()` function
 * `min()` function
+* `sorted()` function
+* `lambda`
 * `.index()` method
+* `.append()` method
+* `.remove()` method
+* `.clear()` method
 * `round()` function
 * `.lower()` method
 
@@ -323,7 +663,12 @@ Used to store student information, subject names, grades, attendance, averages, 
 
 ### Lists
 
-Used to store multiple subjects, grades, recommendations, and student records.
+Used to store:
+
+* Subjects
+* Grades
+* Recommendations
+* Student records
 
 ### Dictionaries
 
@@ -333,17 +678,21 @@ Example information stored includes:
 
 * Name
 * Student ID
+* Subjects
+* Grades
 * Average
 * Letter grade
 * Attendance
 * Failed subjects
 * GPA
+* Performance
+* Academic standing
 
 ### Functions
 
 The expanded version uses functions to divide the program into smaller sections.
 
-Examples include:
+Some of the functions include:
 
 * `get_grade()`
 * `get_attendance()`
@@ -367,26 +716,49 @@ Examples include:
 * `view_student_records()`
 * `search_student()`
 * `display_class_summary()`
+* `view_student_details()`
+* `edit_student_record()`
+* `update_student_calculation()`
+* `delete_student_record()`
+* `rank_students()`
+* `display_honor_students()`
+* `display_students_needing_improvement()`
+* `display_subject_statistics()`
+* `display_class_performance()`
+* `clear_all_records()`
 * `calculate_student()`
 * `main()`
 
-Using functions makes the program easier to organize, read, and maintain.
+Using functions makes the program easier to organize, read, debug, and maintain.
 
 ### Conditional Statements
 
-`if`, `elif`, and `else` statements are used to determine letter grades, remarks, performance levels, attendance status, scholarship eligibility, academic standing, and overall academic status.
+`if`, `elif`, and `else` statements are used to determine:
+
+* Letter grades
+* Remarks
+* Performance levels
+* Attendance status
+* Scholarship eligibility
+* Academic standing
+* Overall academic status
+* Honor eligibility
+* Students needing improvement
+* Menu selections
 
 ### For Loops
 
 A `for` loop is used to:
 
-* Go through the subjects
+* Go through subjects
 * Display each subject with its corresponding grade
 * Check the performance of each subject
 * Generate grade summaries
 * Generate study recommendations
 * Search through student records
 * Calculate class statistics
+* Display student rankings
+* Calculate subject statistics
 
 ### While Loops
 
@@ -401,22 +773,36 @@ A `for` loop is used to:
 
 ### Range Function
 
-The `range()` function is used together with the `for` loop to access each subject and grade in the list.
+The `range()` function is used together with `for` loops to access each subject and grade in the lists.
 
 ### Try and Except
 
 `try` and `except` are used to prevent the program from crashing when the user enters text instead of a number for grades or attendance.
 
+### Sorting
+
+The `sorted()` function is used to arrange students based on their average grade.
+
+The ranking system sorts students from the highest average to the lowest average.
+
+### Lambda
+
+A `lambda` function is used with `sorted()` to tell Python which value should be used when ranking students.
+
 ### Built-in Functions
 
 The project uses Python functions and methods such as:
 
-* `sum()` to calculate the total grades
+* `sum()` to calculate total grades
 * `max()` to find the highest grade
 * `min()` to find the lowest grade
+* `sorted()` to rank students
 * `round()` to make averages easier to read
-* `.index()` to identify the subject connected to the highest or lowest grade
+* `.index()` to identify the subject connected to a grade
 * `.lower()` to make text searches easier
+* `.append()` to add information to lists
+* `.remove()` to remove a selected record
+* `.clear()` to remove all records
 
 ## Grading System
 
@@ -515,11 +901,20 @@ The program provides an estimated GPA equivalent based on the student's average.
 21. The program determines the student's academic standing.
 22. The program identifies subjects that need improvement.
 23. The program provides study recommendations.
-24. The student's record is stored temporarily.
+24. The student's complete record is stored temporarily.
 25. The user can view saved student records.
 26. The user can search for a student.
-27. The user can view the class summary.
-28. The user can calculate another student's grades or exit the program.
+27. The user can view a detailed student report.
+28. The user can edit a student record.
+29. The user can delete a student record.
+30. The user can rank all students.
+31. The user can view honor students.
+32. The user can view students needing improvement.
+33. The user can view subject statistics.
+34. The user can view class performance.
+35. The user can view the class summary and pass rate.
+36. The user can clear all records.
+37. The user can calculate another student's grades or exit the program.
 
 ## How to Run
 
@@ -537,8 +932,12 @@ The program provides an estimated GPA equivalent based on the student's average.
 12. Review the GPA and academic standing.
 13. Read the subject improvement suggestions and study recommendations.
 14. Save and review the student's temporary record.
-15. Search for students or view the class summary when needed.
-16. Choose whether to calculate another student's grades or exit.
+15. Search for students or view detailed reports.
+16. Edit or delete records when needed.
+17. View rankings, honors, subject statistics, and class performance.
+18. View the class summary and pass rate.
+19. Clear records when needed.
+20. Choose whether to calculate another student's grades or exit.
 
 ## Example Output
 
@@ -550,7 +949,16 @@ The program provides an estimated GPA equivalent based on the student's average.
 2. View Student Records
 3. Search Student
 4. View Class Summary
-5. Exit
+5. View Detailed Student Report
+6. Edit Student Record
+7. Delete Student Record
+8. Rank Students
+9. View Honor Students
+10. Students Needing Improvement
+11. Subject Statistics
+12. Class Performance
+13. Clear All Records
+14. Exit
 ===================================
 
 Choose an option: 1
@@ -641,35 +1049,64 @@ CALCULATION COMPLETE
 
 This project was created as a beginner Python programming project to practice calculating grades and working with basic programming concepts.
 
-It was later expanded with additional student information, more subjects, grade validation, attendance tracking, subject analysis, performance recognition, scholarship eligibility, GPA calculation, academic standing, study recommendations, temporary student records, student searching, and class summaries.
+It was later expanded into a more complete **Student Grade Management and Performance Analyzer** with additional student management and class analysis features.
 
-The goal is to make a simple but useful grade calculator while practicing important Python fundamentals such as **variables, lists, dictionaries, functions, conditional statements, loops, input validation, and built-in functions**.
+The project now includes:
+
+* Multiple subject grade calculation
+* Grade validation
+* Attendance tracking
+* Performance analysis
+* Scholarship eligibility
+* GPA calculation
+* Academic standing
+* Study recommendations
+* Subject improvement analysis
+* Temporary student records
+* Student searching
+* Detailed student reports
+* Student record editing
+* Student record deletion
+* Student ranking
+* Honor student identification
+* Students needing improvement
+* Subject statistics
+* Class performance analysis
+* Class summary
+* Class pass rate
+* Record clearing
+
+The goal is to make a simple but useful grade management system while practicing important Python fundamentals such as **variables, lists, dictionaries, functions, conditional statements, loops, input validation, sorting, and built-in functions**.
 
 ## Future Improvements
 
 Possible future improvements include:
 
 * Save student records permanently to a file
-* Search for students by student ID
-* Add more subjects
 * Export grades to a text or CSV file
-* Generate a detailed student report
-* Add editing and deleting of student records
 * Add a database for permanent student records
+* Add more subjects
 * Add more detailed GPA/GWA calculations
+* Add semester and school year information
+* Add class sections
+* Add teacher or administrator accounts
 * Add a graphical user interface
 * Create a web version of the calculator
-* Add teacher or administrator accounts
-* Add class sections
-* Add semester and school year information
+* Generate printable student reports
+* Add charts and graphs for class performance
+* Add attendance history
+* Add multiple grading periods
+* Add login functionality
+* Add student profile pictures
+* Add automatic report generation
 
 ## Project Status
 
 **Completed and continuously improving**
 
-This project started as a simple student grade calculator and was expanded with additional academic performance features while keeping the original grading system.
+This project started as a simple student grade calculator and was expanded into a student grade management and academic performance analysis system while keeping the original grading system.
 
-The current version includes multiple subjects, grade validation, attendance tracking, performance analysis, scholarship eligibility, GPA calculation, academic standing, study recommendations, subject improvement analysis, temporary student records, student search, and class summary features.
+The current version includes multiple subjects, grade validation, attendance tracking, performance analysis, scholarship eligibility, GPA calculation, academic standing, study recommendations, subject improvement analysis, temporary student records, student search, detailed student reports, record editing, record deletion, student ranking, honor student identification, subject statistics, class performance, class summaries, and class pass rates.
 
 ## Author
 
