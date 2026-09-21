@@ -142,6 +142,7 @@ def display_subject_performance(subjects, grades):
         if grades[i] >= 75:
             print(subjects[i] + ":", grades[i], "- Passed")
             passed_subjects += 1
+
         else:
             print(subjects[i] + ":", grades[i], "- Failed")
             failed_subjects += 1
@@ -183,6 +184,7 @@ def display_grade_summary(subjects, grades):
     failed_count = 0
 
     for i in range(len(subjects)):
+
         if grades[i] >= 90:
             level = "Excellent"
             excellent_count += 1
@@ -269,7 +271,6 @@ def display_overall_status(average, failed_subjects):
         return "FAILED"
 
 
-# NEW FEATURE
 def display_gpa(average):
     print("\n==============================")
     print("GPA EQUIVALENT")
@@ -294,7 +295,6 @@ def display_gpa(average):
     return gpa
 
 
-# NEW FEATURE
 def display_academic_standing(average, failed_subjects, attendance):
     print("\n==============================")
     print("ACADEMIC STANDING")
@@ -317,7 +317,6 @@ def display_academic_standing(average, failed_subjects, attendance):
     return standing
 
 
-# NEW FEATURE
 def display_attendance(attendance):
     print("\n==============================")
     print("ATTENDANCE")
@@ -338,7 +337,6 @@ def display_attendance(attendance):
         print("Attendance requirement is satisfactory.")
 
 
-# NEW FEATURE
 def display_recommendations(subjects, grades, average, attendance):
     print("\n==============================")
     print("STUDY RECOMMENDATIONS")
@@ -347,6 +345,7 @@ def display_recommendations(subjects, grades, average, attendance):
     recommendations = []
 
     for i in range(len(subjects)):
+
         if grades[i] < 75:
             recommendations.append(
                 "Focus on " + subjects[i] + " because it is currently failing."
@@ -381,7 +380,6 @@ def display_recommendations(subjects, grades, average, attendance):
         print("-", recommendation)
 
 
-# NEW FEATURE
 def display_subject_improvement(subjects, grades):
     print("\n==============================")
     print("SUBJECT IMPROVEMENT NEEDED")
@@ -390,6 +388,7 @@ def display_subject_improvement(subjects, grades):
     found = False
 
     for i in range(len(subjects)):
+
         if grades[i] < 75:
             points_needed = 75 - grades[i]
 
@@ -406,23 +405,27 @@ def display_subject_improvement(subjects, grades):
         print("No subject needs improvement to reach the passing grade.")
 
 
-# NEW FEATURE
-def save_student_record(name, student_id, average, letter_grade,
-                        attendance, failed_subjects, gpa):
+def save_student_record(name, student_id, subjects, grades, average,
+                        letter_grade, attendance, failed_subjects, gpa,
+                        performance, standing):
+
     record = {
         "name": name,
         "student_id": student_id,
+        "subjects": subjects,
+        "grades": grades,
         "average": average,
         "letter_grade": letter_grade,
         "attendance": attendance,
         "failed_subjects": failed_subjects,
-        "gpa": gpa
+        "gpa": gpa,
+        "performance": performance,
+        "standing": standing
     }
 
     student_records.append(record)
 
 
-# NEW FEATURE
 def view_student_records():
     print("\n==============================")
     print("SAVED STUDENT RECORDS")
@@ -443,9 +446,10 @@ def view_student_records():
         print("Attendance:", record["attendance"], "%")
         print("Failed Subjects:", record["failed_subjects"])
         print("GPA:", record["gpa"])
+        print("Performance:", record["performance"])
+        print("Academic Standing:", record["standing"])
 
 
-# NEW FEATURE
 def search_student():
     print("\n==============================")
     print("SEARCH STUDENT")
@@ -460,7 +464,9 @@ def search_student():
     found = False
 
     for record in student_records:
+
         if search in record["name"].lower() or search in record["student_id"].lower():
+
             print("\nStudent Found")
             print("------------------------------")
             print("Name:", record["name"])
@@ -470,6 +476,8 @@ def search_student():
             print("Attendance:", record["attendance"], "%")
             print("Failed Subjects:", record["failed_subjects"])
             print("GPA:", record["gpa"])
+            print("Performance:", record["performance"])
+            print("Academic Standing:", record["standing"])
 
             found = True
 
@@ -477,7 +485,6 @@ def search_student():
         print("Student record not found.")
 
 
-# NEW FEATURE
 def display_class_summary():
     print("\n==============================")
     print("CLASS SUMMARY")
@@ -498,6 +505,7 @@ def display_class_summary():
     failed_students = 0
 
     for record in student_records:
+
         total_average += record["average"]
 
         if record["average"] > highest_average:
@@ -510,19 +518,426 @@ def display_class_summary():
 
         if record["average"] >= 75 and record["failed_subjects"] == 0:
             passed_students += 1
+
         else:
             failed_students += 1
 
     class_average = total_average / len(student_records)
 
+    pass_rate = (passed_students / len(student_records)) * 100
+
     print("Number of Students:", len(student_records))
     print("Class Average:", round(class_average, 2))
+
     print("Highest Student Average:", round(highest_average, 2))
     print("Highest Student:", highest_student)
+
     print("Lowest Student Average:", round(lowest_average, 2))
     print("Lowest Student:", lowest_student)
+
     print("Students Passed:", passed_students)
     print("Students Failed:", failed_students)
+    print("Class Pass Rate:", round(pass_rate, 2), "%")
+
+
+# NEW FEATURE
+def view_student_details():
+    print("\n==============================")
+    print("DETAILED STUDENT REPORT")
+    print("==============================")
+
+    if len(student_records) == 0:
+        print("No student records available.")
+        return
+
+    search = input("Enter student name or ID: ").lower()
+
+    found = False
+
+    for record in student_records:
+
+        if search in record["name"].lower() or search in record["student_id"].lower():
+
+            print("\n===================================")
+            print("STUDENT REPORT")
+            print("===================================")
+
+            print("Name:", record["name"])
+            print("Student ID:", record["student_id"])
+
+            print("\nSUBJECTS")
+
+            subjects = record["subjects"]
+            grades = record["grades"]
+
+            for i in range(len(subjects)):
+                print(subjects[i], ":", grades[i])
+
+            print("\nACADEMIC INFORMATION")
+            print("Average:", round(record["average"], 2))
+            print("Letter Grade:", record["letter_grade"])
+            print("GPA:", record["gpa"])
+            print("Performance:", record["performance"])
+            print("Academic Standing:", record["standing"])
+
+            print("\nATTENDANCE")
+            print("Attendance:", record["attendance"], "%")
+            print(
+                "Attendance Status:",
+                get_attendance_status(record["attendance"])
+            )
+
+            print("\nFAILED SUBJECTS:", record["failed_subjects"])
+
+            found = True
+
+    if found == False:
+        print("Student record not found.")
+
+
+# NEW FEATURE
+def edit_student_record():
+    print("\n==============================")
+    print("EDIT STUDENT RECORD")
+    print("==============================")
+
+    if len(student_records) == 0:
+        print("No student records available.")
+        return
+
+    search = input("Enter student name or ID: ").lower()
+
+    found = False
+
+    for record in student_records:
+
+        if search in record["name"].lower() or search in record["student_id"].lower():
+
+            found = True
+
+            print("\nStudent Found")
+            print("Name:", record["name"])
+            print("Student ID:", record["student_id"])
+
+            print("\nWhat would you like to edit?")
+            print("1. Student Name")
+            print("2. Student ID")
+            print("3. Grades")
+            print("4. Attendance")
+            print("5. Cancel")
+
+            choice = input("Choose an option: ")
+
+            if choice == "1":
+                record["name"] = input("Enter new name: ")
+                print("Student name updated.")
+
+            elif choice == "2":
+                record["student_id"] = input("Enter new student ID: ")
+                print("Student ID updated.")
+
+            elif choice == "3":
+
+                print("\nEnter new grades.")
+
+                for i in range(len(record["subjects"])):
+                    record["grades"][i] = get_grade(
+                        record["subjects"][i]
+                    )
+
+                update_student_calculation(record)
+
+                print("Grades updated.")
+
+            elif choice == "4":
+                record["attendance"] = get_attendance()
+
+                update_student_calculation(record)
+
+                print("Attendance updated.")
+
+            elif choice == "5":
+                print("Edit cancelled.")
+
+            else:
+                print("Invalid option.")
+
+            break
+
+    if found == False:
+        print("Student record not found.")
+
+
+def update_student_calculation(record):
+
+    grades = record["grades"]
+
+    average = sum(grades) / len(grades)
+
+    letter_grade, remarks = get_letter_grade(average)
+
+    failed_subjects = 0
+
+    for grade in grades:
+        if grade < 75:
+            failed_subjects += 1
+
+    gpa = get_gpa(average)
+
+    performance = get_performance_level(average)
+
+    attendance = record["attendance"]
+
+    if average >= 90 and failed_subjects == 0 and attendance >= 90:
+        standing = "Excellent Standing"
+
+    elif average >= 85 and failed_subjects == 0:
+        standing = "Good Standing"
+
+    elif average >= 75 and failed_subjects == 0:
+        standing = "Satisfactory Standing"
+
+    else:
+        standing = "Academic Improvement Needed"
+
+    record["average"] = average
+    record["letter_grade"] = letter_grade
+    record["failed_subjects"] = failed_subjects
+    record["gpa"] = gpa
+    record["performance"] = performance
+    record["standing"] = standing
+
+
+# NEW FEATURE
+def delete_student_record():
+    print("\n==============================")
+    print("DELETE STUDENT RECORD")
+    print("==============================")
+
+    if len(student_records) == 0:
+        print("No student records available.")
+        return
+
+    search = input("Enter student name or ID: ").lower()
+
+    found = False
+
+    for record in student_records:
+
+        if search in record["name"].lower() or search in record["student_id"].lower():
+
+            found = True
+
+            print("\nStudent Found")
+            print("Name:", record["name"])
+            print("Student ID:", record["student_id"])
+
+            confirm = input(
+                "Are you sure you want to delete this record? (yes/no): "
+            ).lower()
+
+            if confirm == "yes":
+                student_records.remove(record)
+                print("Student record deleted.")
+
+            else:
+                print("Delete cancelled.")
+
+            break
+
+    if found == False:
+        print("Student record not found.")
+
+
+# NEW FEATURE
+def rank_students():
+    print("\n==============================")
+    print("STUDENT RANKING")
+    print("==============================")
+
+    if len(student_records) == 0:
+        print("No student records available.")
+        return
+
+    ranked_students = sorted(
+        student_records,
+        key=lambda record: record["average"],
+        reverse=True
+    )
+
+    rank = 1
+
+    for record in ranked_students:
+
+        print(
+            rank,
+            ".",
+            record["name"],
+            "- Average:",
+            round(record["average"], 2),
+            "- GPA:",
+            record["gpa"]
+        )
+
+        rank += 1
+
+
+# NEW FEATURE
+def display_honor_students():
+    print("\n==============================")
+    print("HONOR STUDENTS")
+    print("==============================")
+
+    if len(student_records) == 0:
+        print("No student records available.")
+        return
+
+    found = False
+
+    for record in student_records:
+
+        if record["average"] >= 90 and record["failed_subjects"] == 0:
+
+            print(
+                record["name"],
+                "- Average:",
+                round(record["average"], 2),
+                "- With Honors"
+            )
+
+            found = True
+
+    if found == False:
+        print("No students currently qualify for honors.")
+
+
+# NEW FEATURE
+def display_students_needing_improvement():
+    print("\n==============================")
+    print("STUDENTS NEEDING IMPROVEMENT")
+    print("==============================")
+
+    if len(student_records) == 0:
+        print("No student records available.")
+        return
+
+    found = False
+
+    for record in student_records:
+
+        if record["average"] < 75 or record["failed_subjects"] > 0:
+
+            print(
+                record["name"],
+                "- Average:",
+                round(record["average"], 2),
+                "- Failed Subjects:",
+                record["failed_subjects"]
+            )
+
+            found = True
+
+    if found == False:
+        print("No students currently need academic improvement.")
+
+
+# NEW FEATURE
+def display_subject_statistics():
+    print("\n==============================")
+    print("SUBJECT STATISTICS")
+    print("==============================")
+
+    if len(student_records) == 0:
+        print("No student records available.")
+        return
+
+    subjects = student_records[0]["subjects"]
+
+    for i in range(len(subjects)):
+
+        total = 0
+        highest = 0
+        lowest = 100
+
+        for record in student_records:
+
+            grade = record["grades"][i]
+
+            total += grade
+
+            if grade > highest:
+                highest = grade
+
+            if grade < lowest:
+                lowest = grade
+
+        subject_average = total / len(student_records)
+
+        print("\nSubject:", subjects[i])
+        print("Average:", round(subject_average, 2))
+        print("Highest Grade:", highest)
+        print("Lowest Grade:", lowest)
+
+
+# NEW FEATURE
+def display_class_performance():
+    print("\n==============================")
+    print("CLASS PERFORMANCE")
+    print("==============================")
+
+    if len(student_records) == 0:
+        print("No student records available.")
+        return
+
+    excellent = 0
+    good = 0
+    satisfactory = 0
+    needs_improvement = 0
+
+    for record in student_records:
+
+        average = record["average"]
+
+        if average >= 90:
+            excellent += 1
+
+        elif average >= 80:
+            good += 1
+
+        elif average >= 75:
+            satisfactory += 1
+
+        else:
+            needs_improvement += 1
+
+    print("Excellent:", excellent)
+    print("Good:", good)
+    print("Satisfactory:", satisfactory)
+    print("Needs Improvement:", needs_improvement)
+
+
+# NEW FEATURE
+def clear_all_records():
+    print("\n==============================")
+    print("CLEAR ALL RECORDS")
+    print("==============================")
+
+    if len(student_records) == 0:
+        print("There are no records to delete.")
+        return
+
+    print("Number of records:", len(student_records))
+
+    confirm = input(
+        "Are you sure you want to delete ALL records? (yes/no): "
+    ).lower()
+
+    if confirm == "yes":
+        student_records.clear()
+        print("All student records have been deleted.")
+
+    else:
+        print("Operation cancelled.")
 
 
 def calculate_student():
@@ -574,7 +989,8 @@ def calculate_student():
     print("Remarks:", remarks)
 
     passed_subjects, failed_subjects = display_subject_performance(
-        subjects, grades
+        subjects,
+        grades
     )
 
     display_grade_analysis(subjects, grades)
@@ -604,7 +1020,6 @@ def calculate_student():
 
     display_grade_summary(subjects, grades)
 
-    # NEW FEATURES
     gpa = display_gpa(average)
 
     academic_standing = display_academic_standing(
@@ -628,11 +1043,15 @@ def calculate_student():
     save_student_record(
         name,
         student_id,
+        subjects,
+        grades,
         average,
         letter_grade,
         attendance,
         failed_subjects,
-        gpa
+        gpa,
+        performance,
+        academic_standing
     )
 
     print("\n==============================")
@@ -641,15 +1060,28 @@ def calculate_student():
 
 
 def main():
+
     while True:
+
         print("\n===================================")
         print("     STUDENT GRADE CALCULATOR")
         print("===================================")
+
         print("1. Calculate Student Grade")
         print("2. View Student Records")
         print("3. Search Student")
         print("4. View Class Summary")
-        print("5. Exit")
+        print("5. View Detailed Student Report")
+        print("6. Edit Student Record")
+        print("7. Delete Student Record")
+        print("8. Rank Students")
+        print("9. View Honor Students")
+        print("10. Students Needing Improvement")
+        print("11. Subject Statistics")
+        print("12. Class Performance")
+        print("13. Clear All Records")
+        print("14. Exit")
+
         print("===================================")
 
         choice = input("Choose an option: ")
@@ -667,11 +1099,38 @@ def main():
             display_class_summary()
 
         elif choice == "5":
+            view_student_details()
+
+        elif choice == "6":
+            edit_student_record()
+
+        elif choice == "7":
+            delete_student_record()
+
+        elif choice == "8":
+            rank_students()
+
+        elif choice == "9":
+            display_honor_students()
+
+        elif choice == "10":
+            display_students_needing_improvement()
+
+        elif choice == "11":
+            display_subject_statistics()
+
+        elif choice == "12":
+            display_class_performance()
+
+        elif choice == "13":
+            clear_all_records()
+
+        elif choice == "14":
             print("\nProgram Ended.")
             break
 
         else:
-            print("\nInvalid choice. Please choose 1 to 5.")
+            print("\nInvalid choice. Please choose 1 to 14.")
 
 
 main()
