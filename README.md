@@ -1,113 +1,94 @@
 # Company Attendance System
 
-A complete **Employee Attendance Management System** developed with Python. The system helps companies manage employee information, track daily attendance, and monitor employee work schedules through a simple and beginner-friendly desktop application.
+A complete **Employee Attendance Management System** developed using Python. This project helps companies manage employee information, track daily attendance, monitor work schedules, and review attendance records through a simple and beginner-friendly desktop application.
 
-The project focuses on employee attendance management using **Clock In** and **Clock Out** functionality while also providing additional tools for managing employees, checking attendance records, generating reports, and viewing attendance statistics.
+The system focuses on **Clock In** and **Clock Out** functionality while providing additional tools for employee management, attendance tracking, working-hours calculation, record searching, and attendance reporting.
+
+The project demonstrates how Python can be used to build a practical application by combining functions, loops, conditional statements, data management, date and time handling, and input validation.
 
 ---
 
 ## Features
 
 ### Employee Management
-
-The system allows administrators to manage employee information.
-
-* Add new employees
-* View employee list
-* Search for employees
-* Update employee information
-* Remove employees
-* View individual employee details
-* Organize employees using employee IDs
-* Store employee names and other basic information
+- Add new employees
+- View the employee list
+- Search for employees
+- Update employee information
+- Remove employees
+- View individual employee details
+- Organize employee information using employee IDs
+- Validate employee information
+- Prevent duplicate employee IDs
 
 ### Clock In
-
-Employees can clock in when they start their workday.
+Employees can clock in when they begin their workday.
 
 The system records:
+- Employee ID
+- Employee name
+- Attendance date
+- Clock-in time
+- Attendance status
 
-* Employee ID
-* Employee name
-* Clock-in date
-* Clock-in time
-* Attendance status
-
-The system also prevents an employee from clocking in multiple times without first clocking out.
+The system also prevents employees from clocking in multiple times without first clocking out.
 
 ### Clock Out
-
 Employees can clock out when they finish their workday.
 
 The system records:
+- Clock-out date
+- Clock-out time
+- Total working time
+- Attendance record
 
-* Clock-out date
-* Clock-out time
-* Total working time
-* Attendance record
-
-The system checks whether the employee is currently clocked in before allowing them to clock out.
-
-### Attendance Records
-
-The system keeps track of employee attendance records.
-
-Users can:
-
-* View attendance records
-* Search attendance records
-* Check employee attendance history
-* View clock-in and clock-out times
-* Check working hours
-* Identify employees who are currently working
-* Review previous attendance records
+Employees must have an active clock-in record before they can clock out.
 
 ### Today's Attendance
+View attendance activity for the current day, including:
+- Employees who have clocked in
+- Employees who have clocked out
+- Employees currently working
+- Clock-in times
+- Clock-out times
+- Total working hours
 
-A dedicated attendance view allows users to see the attendance activity for the current day.
+### Attendance Records
+The system maintains attendance information for reviewing employee activity.
 
-It can display:
-
-* Employees who clocked in
-* Employees who clocked out
-* Employees currently working
-* Clock-in times
-* Clock-out times
-* Total working hours
+Users can:
+- View attendance records
+- Search attendance records
+- Check individual attendance history
+- Review clock-in and clock-out times
+- Check calculated working hours
+- Identify employees who are currently working
+- Review previous attendance records
 
 ### Attendance Status
-
-The system can determine different attendance statuses based on employee activity.
+The system can use attendance information to identify different employee statuses, depending on the implemented rules.
 
 Examples include:
-
-* Present
-* Currently Working
-* Completed Shift
-* Absent
-* Late
-
-This makes it easier for administrators to understand the current attendance situation.
+- Present
+- Currently Working
+- Completed Shift
+- Absent
+- Late
 
 ### Late Employee Tracking
+The system can identify employees who clock in after their expected work start time, provided that a scheduled start time is configured.
 
-The system can identify employees who clocked in after the expected work start time.
-
-Late records can include:
-
-* Employee name
-* Employee ID
-* Clock-in time
-* Expected start time
-* Late status
-
-This provides a simple way to monitor employee punctuality.
+Late attendance information may include:
+- Employee ID
+- Employee name
+- Expected start time
+- Actual clock-in time
+- Late status
 
 ### Working Hours Calculation
+The system calculates the time between clock-in and clock-out.
 
-The system automatically calculates the amount of time an employee worked.
-
-For example:
+Example:
 
 ```text
 Clock In: 08:00 AM
@@ -116,51 +97,38 @@ Clock Out: 05:00 PM
 Working Hours: 9 hours
 ```
 
-The system calculates the difference between the clock-in and clock-out times.
+The actual calculation depends on the recorded timestamps. Break deductions and overtime rules require additional implementation.
 
 ### Employee Attendance History
-
-Administrators can view the attendance history of individual employees.
-
-This can be useful for checking:
-
-* Previous clock-ins
-* Previous clock-outs
-* Working hours
-* Attendance dates
-* Late records
-* Attendance patterns
+Review individual attendance records to check:
+- Previous clock-ins
+- Previous clock-outs
+- Attendance dates
+- Working hours
+- Late arrivals, when supported
+- Attendance patterns
 
 ### Attendance Search
-
-The system includes search functionality for quickly finding attendance information.
-
-Users can search using information such as:
-
-* Employee ID
-* Employee name
-* Date
-* Attendance status
-
-This makes it easier to find specific records without manually checking every entry.
+Search for attendance information using available employee and attendance details, such as:
+- Employee ID
+- Employee name
+- Attendance date
+- Attendance status
 
 ### Attendance Statistics
+The system can summarize attendance information using available records.
 
-The system provides basic attendance statistics to help summarize employee attendance.
-
-Statistics may include:
-
-* Total employees
-* Employees present
-* Employees absent
-* Employees currently working
-* Number of completed shifts
-* Number of late employees
-* Total attendance records
+Possible statistics include:
+- Total employees
+- Employees present
+- Employees absent
+- Employees currently working
+- Completed shifts
+- Late employees
+- Total attendance records
 
 ### Daily Attendance Summary
-
-The system can generate a summary of attendance for a selected day.
+Generate an overview of employee attendance for a particular day.
 
 Example:
 
@@ -175,86 +143,46 @@ Completed Shifts: 9
 Late Employees: 4
 ```
 
-### Employee Performance Summary
+*The figures above are examples only.*
 
-The system can provide basic attendance information for individual employees.
-
-It can show:
-
-* Number of attendance records
-* Number of late arrivals
-* Total working hours
-* Average working hours
-* Attendance history
-
-This provides a simple overview of an employee's attendance behavior.
+### Employee Attendance Summary
+Review an employee's attendance information, including:
+- Number of attendance records
+- Total working hours
+- Average working hours
+- Attendance history
+- Late arrivals, when supported
 
 ### Attendance Reports
+The reporting features help administrators review attendance information without manually checking every record.
 
-The system includes attendance reporting functionality.
-
-Reports can be used to review:
-
-* Daily attendance
-* Employee attendance
-* Working hours
-* Late employees
-* Attendance statistics
-
-Reports help administrators review attendance information without checking each transaction individually.
+Depending on the implemented version, reports may include:
+- Daily attendance
+- Individual employee attendance
+- Working-hours summaries
+- Late employee records
+- Attendance statistics
 
 ### Data Validation
-
-The program checks user input before processing information.
+The system validates user input to help prevent common errors.
 
 Examples include:
-
-* Checking if an employee ID exists
-* Checking if required information is entered
-* Preventing duplicate employee IDs
-* Preventing invalid clock-in actions
-* Preventing invalid clock-out actions
-* Checking whether an employee is already clocked in
-* Checking whether an employee has an active attendance record
-
-This helps prevent common input errors.
-
-### Duplicate Clock-In Prevention
-
-An employee cannot clock in again while they already have an active clock-in record.
-
-For example:
-
-```text
-Employee 1001 is already clocked in.
-Please clock out first.
-```
-
-This prevents duplicate attendance records.
-
-### Clock-Out Validation
-
-Employees can only clock out if they have an active clock-in record.
-
-If an employee has not clocked in, the system will display an appropriate message instead of creating an invalid clock-out record.
-
-### Employee Removal
-
-Administrators can remove employees from the employee list.
-
-Before removing an employee, the system can verify that the employee exists.
-
-This helps prevent accidental deletion of unknown employee records.
+- Checking whether an employee ID exists
+- Checking required information
+- Preventing duplicate employee IDs
+- Preventing duplicate clock-ins
+- Preventing clock-outs without an active attendance record
+- Handling invalid menu selections
+- Checking for missing or invalid information
 
 ### Employee Information Editing
+Administrators can update existing employee information without creating a completely new employee record.
 
-Existing employee information can be updated when necessary.
+### Employee Removal
+Administrators can remove employees after checking whether the specified employee exists.
 
-This allows administrators to correct or change employee details without creating a completely new employee record.
-
-### Menu-Based System
-
-The Python application uses a menu-based interface to make the system easy to navigate.
+### Menu-Based Navigation
+The Python application uses a menu-based interface that allows users to select available operations.
 
 Example:
 
@@ -274,47 +202,32 @@ Example:
 9. Exit
 ```
 
-The user can select an option by entering its corresponding number.
+*The actual menu options depend on the current version of the source code.*
 
 ---
 
 ## How the System Works
 
 ### 1. Start the Program
-
-Run the Python program from your Python IDE or terminal.
-
-The main menu will appear.
+Run the Python application using PyCharm, another Python IDE, or a terminal.
 
 ### 2. Manage Employees
-
-Administrators can add, view, search, edit, or remove employees.
-
-Each employee is assigned an employee ID.
+Add employees and manage their information using their employee IDs.
 
 ### 3. Clock In
-
-When an employee begins work, their employee ID is entered into the system.
-
-The system records the current date and time.
+Enter the employee ID to record the employee's clock-in date and time.
 
 ### 4. Work During the Shift
-
-The employee remains marked as currently working until they clock out.
+The employee remains marked as currently working until a valid clock-out is recorded.
 
 ### 5. Clock Out
-
-When the employee finishes work, they enter their employee ID again.
-
-The system records the clock-out time and calculates their working hours.
+Enter the employee ID again to record the clock-out time and calculate the working duration.
 
 ### 6. Review Attendance
+View daily attendance, search records, and review individual employee histories.
 
-Administrators can view attendance records and check employee attendance information.
-
-### 7. Generate Reports
-
-Attendance statistics and reports can be viewed to summarize employee attendance.
+### 7. Check Statistics and Reports
+Use the available reporting features to review attendance information and summarize employee activity.
 
 ---
 
@@ -330,8 +243,6 @@ Working Hours: 8 hours 59 minutes
 Status: Present
 ```
 
----
-
 ## Example Late Record
 
 ```text
@@ -341,8 +252,6 @@ Expected Time: 08:00 AM
 Clock In: 08:17 AM
 Status: Late
 ```
-
----
 
 ## Example Employee List
 
@@ -357,150 +266,113 @@ Employee ID    Name
 ----------------------------------------
 ```
 
+*These examples illustrate the expected output format and are not actual records from the program.*
+
 ---
 
 ## Project Structure
 
+The project may be organized into separate Python files to make the code easier to maintain.
+
 ```text
-Clock In Clock Out/
+Company Attendance System/
 │
 ├── main.py
-├── employee.py
+├── database.py
+├── dashboard.py
+├── employees.py
 ├── attendance.py
-├── reports.py
-└── README.md
+├── README.md
+└── company_attnce.db
 ```
 
-> The exact files may vary depending on the current version of the project.
+The exact structure depends on the version being used. Files such as `dashboard.py` and `database.py` may be present in the desktop version, while a web version may use HTML, CSS, and JavaScript instead.
 
 ---
 
 ## Technologies Used
 
-* **Python**
-* **Python DateTime**
-* **Lists**
-* **Dictionaries**
-* **Functions**
-* **Loops**
-* **Conditional Statements**
-* **Input Validation**
-* **File Handling / Data Storage** depending on the project version
+- **Python** — Main programming language
+- **CustomTkinter** — Desktop interface
+- **SQLite** — Local database storage
+- **datetime** — Date and time handling
+- **Tkinter Treeview** — Tabular record display, where implemented
+- **Lists and Dictionaries** — Organizing information
+- **Functions** — Separating program operations
+- **Loops and Conditional Statements** — Managing program flow
+- **Input Validation** — Checking user entries
 
 ---
 
 ## Python Concepts Demonstrated
 
-This project was created to practice important Python programming concepts.
-
 ### Variables
+Store employee information, IDs, attendance dates, times, and calculated working durations.
 
-Used to store information such as employee names, IDs, dates, and times.
-
-### Lists
-
-Used to store multiple employee or attendance records.
-
-Example:
-
-```python
-employees = []
-attendance_records = []
-```
-
-### Dictionaries
-
-Used to organize information about individual employees.
-
-Example:
-
-```python
-employee = {
-    "id": "1001",
-    "name": "Juan Dela Cruz"
-}
-```
+### Lists and Dictionaries
+Organize employee and attendance information in memory or prepare records for database operations.
 
 ### Functions
+Separate the program into smaller operations, such as employee management, clock-in processing, clock-out processing, and attendance reporting.
 
-The program is separated into different functions to make the code easier to understand and maintain.
+### Conditional Statements
+Use `if`, `elif`, and `else` to validate information and determine which actions the system should perform.
 
-Examples:
+### Loops
+Use loops to display menus, process records, and allow users to perform multiple operations.
 
-```python
-add_employee()
-clock_in()
-clock_out()
-view_attendance()
-search_employee()
-generate_report()
-```
-
-### If / Else Statements
-
-Used to make decisions based on employee and attendance information.
-
-Example:
-
-```python
-if employee_exists:
-    print("Employee found.")
-else:
-    print("Employee not found.")
-```
-
-### For Loops
-
-Used to go through employee and attendance records.
-
-### While Loops
-
-Used for menus and repeated user input.
-
-### Date and Time
-
-Python's `datetime` functionality is used to record clock-in and clock-out times.
-
-Example:
+### Date and Time Handling
+Use Python's `datetime` functionality to record timestamps and calculate working durations.
 
 ```python
 from datetime import datetime
 ```
+
+### Database Operations
+Where SQLite is implemented, database operations allow the system to save, retrieve, update, and delete employee and attendance records.
+
+### Input Validation
+Check user entries before processing them to reduce invalid operations and incorrect records.
+
+### GUI Development
+The desktop version uses a graphical interface to organize employee management, attendance records, and dashboard information.
 
 ---
 
 ## Attendance Workflow
 
 ```text
-Employee
-   |
-   v
-Enter Employee ID
-   |
-   v
-Employee Found?
-   |
-   +------ No ------> Display Error
-   |
-  Yes
-   |
-   v
-Clock In
-   |
-   v
-Employee Works
-   |
-   v
-Clock Out
-   |
-   v
-Calculate Working Hours
-   |
-   v
-Save Attendance Record
+        Start
+          |
+          v
+   Enter Employee ID
+          |
+          v
+    Employee Found?
+       /       \
+     No         Yes
+     |           |
+     v           v
+Display Error  Check Attendance
+                  |
+                  v
+              Clock In
+                  |
+                  v
+              Work Shift
+                  |
+                  v
+              Clock Out
+                  |
+                  v
+       Calculate Working Hours
+                  |
+                  v
+        Save Attendance Record
+                  |
+                  v
+       View Reports and Statistics
 ```
-
----
 
 ## Attendance Management Workflow
 
@@ -511,7 +383,7 @@ Employee Management
    Add Employee
         |
         v
-   Employee List
+  Manage Employee Data
         |
         v
      Clock In
@@ -523,10 +395,13 @@ Employee Management
      Clock Out
         |
         v
-Working Hours Calculated
+Calculate Working Hours
         |
         v
- Attendance Record
+Save Attendance Record
+        |
+        v
+Attendance History
         |
         v
 Reports and Statistics
@@ -534,106 +409,78 @@ Reports and Statistics
 
 ---
 
-## Input Validation
-
-The program includes validation to make the system more reliable.
-
-The system checks for situations such as:
-
-```text
-Invalid Employee ID
-Employee Already Exists
-Employee Not Found
-Already Clocked In
-Not Clocked In
-Invalid Menu Option
-Empty Input
-Invalid Attendance Record
-```
-
----
-
 ## Benefits of the System
 
-The system provides a simple way for a company to:
-
-* Manage employees
-* Record employee attendance
-* Track clock-in times
-* Track clock-out times
-* Calculate working hours
-* Monitor late employees
-* Search attendance records
-* View employee history
-* Generate attendance summaries
-* Review attendance statistics
+The project provides a practical way to:
+- Manage employee information
+- Record employee attendance
+- Track clock-in and clock-out times
+- Calculate working hours
+- Monitor employee attendance status
+- Search attendance records
+- Review individual attendance histories
+- View daily attendance activity
+- Generate attendance summaries
+- Organize records in a structured application
 
 ---
 
 ## Future Improvements
 
-Possible future features include:
-
-* SQLite database integration
-* MySQL database integration
-* Login and administrator accounts
-* Employee profile pictures
-* Employee departments
-* Employee positions
-* Different work schedules
-* Overtime tracking
-* Break time tracking
-* Leave management
-* Holiday management
-* Payroll integration
-* Export reports to CSV
-* Export reports to Excel
-* PDF attendance reports
-* Graphs and charts
-* Monthly attendance reports
-* Weekly attendance reports
-* Web application version
-* GUI version using Tkinter or CustomTkinter
-* Automatic backup
-* Cloud database support
+Possible enhancements include:
+- Administrator login and account permissions
+- Employee profile pictures
+- Employee departments and positions
+- Configurable work schedules
+- More advanced late-arrival rules
+- Overtime calculation
+- Break-time tracking
+- Leave and holiday management
+- Payroll integration
+- CSV and Excel report exports
+- PDF attendance reports
+- Attendance graphs and charts
+- Weekly and monthly reports
+- Automatic database backups
+- Cloud database integration
+- Web-based employee portal
+- Improved dashboard analytics
+- More advanced employee search and filtering
 
 ---
 
 ## Purpose of the Project
 
-This project was created as a **Python programming project** to practice building a practical application using basic and intermediate programming concepts.
+The Company Attendance System was developed as a Python programming project to practice building a practical, real-world-style application.
 
-Instead of creating a simple example program, the project demonstrates how Python can be used to create a real-world style **Employee Attendance Management System**.
+It demonstrates how programming concepts can be combined to manage employee information, record attendance, calculate working hours, validate user actions, and present useful attendance information.
 
-The project also helps demonstrate how different Python concepts can work together in one application, including functions, lists, dictionaries, loops, conditional statements, date and time handling, validation, and data management.
-
----
+The project also provides experience in organizing code, working with databases, and developing a desktop application.
 
 ## Learning Goals
 
 Through this project, I practiced:
-
-* Creating Python functions
-* Using lists and dictionaries
-* Working with loops
-* Using conditional statements
-* Handling user input
-* Validating data
-* Working with dates and times
-* Managing multiple records
-* Calculating time differences
-* Creating menu-driven programs
-* Organizing Python code
-* Building a larger Python project
-* Designing a practical real-world application
+- Creating and organizing Python functions
+- Using variables, lists, and dictionaries
+- Working with loops and conditional statements
+- Handling and validating user input
+- Working with dates and times
+- Calculating working durations
+- Managing employee and attendance records
+- Using database operations
+- Building a graphical user interface
+- Organizing a multi-file Python project
+- Developing a practical application
 
 ---
 
 ## Version
 
-**Current Version:** Python Attendance Management System
+**Project:** Company Attendance System  
+**Platform:** Python desktop application  
+**Storage:** SQLite, where implemented
 
-The project may continue to receive new features and improvements as I continue learning Python and software development.
+The project may continue to receive new features and improvements as I continue learning Python and Information Technology.
 
 ---
 
